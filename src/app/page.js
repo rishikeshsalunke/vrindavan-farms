@@ -102,9 +102,9 @@ export default function Home() {
                   Explor Farm
                 </motion.a>
 
-                <a href="/map" className="inline-block border-b border-green-900/20 pb-1 text-[10px] font-medium uppercase tracking-widest text-gray-400 hover:text-green-900 hover:border-green-900 transition-all">
+                {/* <a href="/map" className="inline-block border-b border-green-900/20 pb-1 text-[10px] font-medium uppercase tracking-widest text-gray-400 hover:text-green-900 hover:border-green-900 transition-all">
                   View Estate Map
-                </a>
+                </a> */}
               </div>
             </motion.div>
           </div>
