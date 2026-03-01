@@ -23,7 +23,7 @@ A premium, cinematic web experience for Vrindavan Farms, a luxury resort in Karj
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/vrindavan-farms.git](https://github.com/your-username/vrindavan-farms.git)
+    git clone [(https://github.com/rishikeshsalunke/vrindavan-farms)]
     ```
 2.  **Install dependencies:**
     ```bash
