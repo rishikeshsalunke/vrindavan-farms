@@ -2,9 +2,22 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import Link from "next/link";
+
+
 
 export default function Home() {
   const containerRef = useRef(null);
+
+  const [selectedRoom, setSelectedRoom] = useState("");
+
+  const handleBookClick = (roomId) => {
+    setSelectedRoom(roomId);
+
+    const formSection = document.getElementById("booking-section");
+    formSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -16,8 +29,8 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 100, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-10% 0px -20% 0px" }} 
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} 
+          viewport={{ once: true, margin: "-10% 0px -20% 0px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="w-full"
         >
           <img
@@ -249,13 +262,29 @@ export default function Home() {
           </div>
         </section>
 
+        
+
         {/* 5. THE "RECONNECT" CALL TO ACTION */}
         <section className="py-24 md:py-40 bg-white border-t border-gray-100 text-center px-6">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-7xl font-serif mb-12 leading-tight">The kettle is on. <br /> <span className="italic">Where are you?</span></h2>
+            <h2 className="text-4xl md:text-7xl font-serif mb-12 leading-tight">
+                The kettle is on. <br /> <span className="italic">Where are you?</span>
+            </h2>
             <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
-              <button className="w-full md:w-auto px-12 py-5 bg-green-900 text-white uppercase text-[10px] tracking-widest font-bold hover:bg-black transition-all">Book Overnight</button>
-              <button className="w-full md:w-auto px-12 py-5 border border-green-900 text-green-900 uppercase text-[10px] tracking-widest font-bold hover:bg-green-900 hover:text-white transition-all">Inquire for Events</button>
+              {/* FIXED BUTTONS: Now using Link to navigate to the correct pages */}
+              <Link 
+                href="/packages" 
+                className="w-full md:w-auto px-12 py-5 bg-green-900 text-white uppercase text-[10px] tracking-widest font-bold hover:bg-black transition-all flex items-center justify-center"
+              >
+                Book Overnight
+              </Link>
+              
+              <Link 
+                href="/events" 
+                className="w-full md:w-auto px-12 py-5 border border-green-900 text-green-900 uppercase text-[10px] tracking-widest font-bold hover:bg-green-900 hover:text-white transition-all flex items-center justify-center"
+              >
+                Inquire for Events
+              </Link>
             </div>
           </motion.div>
         </section>

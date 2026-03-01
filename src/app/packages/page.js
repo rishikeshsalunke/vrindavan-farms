@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 // --- DATA ---
 const packages = [
@@ -95,6 +96,7 @@ function ImageSlideshow({ images, title }) {
 
 export default function ExperiencesPage() {
     const [isWeekend, setIsWeekend] = useState(true);
+    const router = useRouter();
 
     return (
         <div className="bg-[#fdfcf7] min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-6 font-sans">
@@ -103,7 +105,7 @@ export default function ExperiencesPage() {
                 {/* 1. Header & Pricing Toggle */}
                 <header className="text-center mb-12 md:mb-16">
                     <h1 className="text-4xl md:text-7xl font-serif mb-4 md:mb-6 text-green-950 leading-tight">Rates & Retreats</h1>
-                    
+
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <span className={`text-[9px] md:text-[10px] font-bold tracking-widest transition-colors ${!isWeekend ? 'text-orange-600' : 'text-gray-400'}`}>WEEKDAYS</span>
                         <button
@@ -117,7 +119,7 @@ export default function ExperiencesPage() {
                         </button>
                         <span className={`text-[9px] md:text-[10px] font-bold tracking-widest transition-colors ${isWeekend ? 'text-orange-600' : 'text-gray-400'}`}>WEEKENDS</span>
                     </div>
-                    
+
                     <p className="text-[9px] md:text-[10px] text-gray-500 font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase italic px-4">
                         *All stays include: Welcome Drink, Lunch, Dinner & Breakfast
                     </p>
@@ -183,10 +185,12 @@ export default function ExperiencesPage() {
                                 </ul>
 
                                 {/* BUTTON */}
-                                <button className="mt-auto w-full py-4 rounded-xl font-bold uppercase text-[10px] tracking-[0.2em] transition-all duration-300
+                                <button
+                                    onClick={() => router.push(`/booking?room=${pkg.id}`)}
+                                    className="mt-auto w-full py-4 rounded-xl font-bold uppercase text-[10px] tracking-[0.2em] transition-all duration-300
                                     bg-green-800 text-white active:scale-[0.98]
-                                    md:bg-transparent md:text-green-800 md:border-2 md:border-green-800 
-                                    md:hover:bg-green-800 md:hover:text-white">
+                                        md:bg-transparent md:text-green-800 md:border-2 md:border-green-800 
+                                        md:hover:bg-green-800 md:hover:text-white">
                                     Book {pkg.title}
                                 </button>
                             </div>
@@ -214,7 +218,7 @@ export default function ExperiencesPage() {
                                 </h2>
                                 <div className="h-px w-20 md:w-24 bg-green-900/20 mb-6 md:mb-8" />
                                 <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                                    Beyond your private sanctuary lies 20,000 square feet of curated nature. 
+                                    Beyond your private sanctuary lies 20,000 square feet of curated nature.
                                     Every amenity is designed for deep reconnection.
                                 </p>
                             </motion.div>
